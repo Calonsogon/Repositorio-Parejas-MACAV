@@ -8,7 +8,6 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* justify-content: space-evenly; */
 
 
     padding: 20px;
@@ -86,8 +85,6 @@ body {
     animation: typewriter 4s steps(44) 1s 1 normal both;
     width: 50%;
 
-
-
 }
 
 @keyframes typewriter {
@@ -99,12 +96,6 @@ body {
         width: 100%;
     }
 }
-
-
-
-
-
-
 
 
 
