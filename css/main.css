@@ -9,152 +9,17 @@ body {
     flex-direction: column;
     align-items: center;
 
-
-    padding: 20px;
 }
-
-/* HEADER INITIAL PAGE */
-
-
-
-.title-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-
-    margin-block: 50px;
-
-    .welcome-message {
-        display: none;
-    }
-
-    h1 {
-        font-size: var(--fs-900);
-        line-height: 0.9;
-
-    }
-
-    img {
-        width: 180px;
-
-        @media (min-width: 768px) {
-            min-width: 200px;
-            order: -1;
-        }
-    }
-
-    @media (min-width: 768px) {
-        flex-direction: row;
-    }
-
-    @media (min-width: 1280px) {
-        h1>br {
-            display: none;
-        }
-
-        .welcome-message {
-            display: block;
-
-            font-size: var(--fs-900);
-            font-weight: var(--fw-700);
-            line-height: 0.9;
-        }
-    }
-}
-
-
-.message-container {
-
-    display: flex;
-    justify-content: center;
-    width: 100%;
-
-
-}
-
-.message {
-    font-size: var(--fs-500);
-    font-weight: var(--fw-600);
-    text-align: center;
-
-
-    overflow: hidden;
-    white-space: nowrap;
-    animation: typewriter 4s steps(44) 1s 1 normal both;
-    width: 50%;
-
-}
-
-@keyframes typewriter {
-    from {
-        width: 0;
-    }
-
-    to {
-        width: 100%;
-    }
-}
-
-
-
-.select-level {
-    display: grid;
-    grid-template-columns: 1fr;
-    justify-items: center;
-    align-items: center;
-    gap: 10px;
-
-    padding: 0 15%;
-    width: 80vw;
-
-    li {
-        width: 100%;
-    }
-
-    @media (min-width: 1280px) {
-        height: 60vh;
-        grid-template-columns: 1fr 1fr 1fr;
-
-        padding: 0;
-
-
-        li {
-            width: auto;
-        }
-    }
-
-}
-
-
-
-
-
-
-
 
 
 /* Button component */
-
-
 
 .button {
     background: var(--shadow-gradient);
     padding: 0 0 20px 20px;
     border-radius: 32px;
-    margin-block: 20px;
-    min-width: 200px;
     transition: all 400ms cubic-bezier(.47, 1.64, .41, .8);
     aspect-ratio: 200 / 40;
-
-
-    @media (min-width: 1280px) {
-        padding: 0 0 20px 10px;
-        width: 200px;
-        aspect-ratio: 100 / 2;
-    }
-
 
     &:hover {
         transform: scale(1.2);
@@ -186,14 +51,10 @@ body {
     color: white;
     text-align: center;
     text-decoration: none;
-    /* display: inline-block; */
     cursor: pointer;
     border-radius: 32px;
     width: 100%;
     aspect-ratio: 200 / 40;
 
-    @media (min-width: 1280px) {
-        aspect-ratio: 1 / 1;
-    }
 
 }
