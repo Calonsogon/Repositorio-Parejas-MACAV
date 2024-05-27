@@ -1,0 +1,105 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background: var(--main-gradient);
+    height: 10%;
+    width: 100%;
+
+    padding: 20px 10px;
+
+    img {
+        width: 70px;
+    }
+
+    .punctuation-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+
+        span {
+            color: white;
+            font-size: var(--fs-600);
+            font-weight: var(--fw-600);
+        }
+
+        .points-container,
+        .timer-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            gap: 10px
+        }
+
+        .timer-icon,
+        .points-icon {
+            display: inline-block;
+
+            max-height: 30px;
+            width: auto;
+
+            
+            @media (min-width: 1280px) {
+                max-height: 50px;
+            }
+        }
+
+    }
+}
+
+main {
+    min-height: 80vh;
+    padding-inline: 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .deck {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+
+        grid-auto-flow: dense;
+
+
+        .card {
+            background-color: var(--card-back);
+
+            border-radius: 10px;
+        }
+
+    }
+
+}
+
+
+.footer {
+    background: var(--main-gradient);
+    display: flex;
+    justify-content: flex-end;
+
+    padding: 20px;
+    width: 100%;
+
+    .button {
+
+        padding: 0 0 10px 10px;
+
+        .button-content {
+            font-size: var(--fs-400);
+
+            @media (min-width: 1280px) {
+                font-size: var(--fs-600);
+            }
+
+        }
+
+    }
+
+}
