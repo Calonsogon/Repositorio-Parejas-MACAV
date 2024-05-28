@@ -16,9 +16,10 @@ function shuffle(cards) {
 
 function displayCards(cards, level) {
     let deck = document.querySelector('.deck');
+
     deck.setAttribute('data-level', level);
     deck.innerHTML = '';
-    console.log(deck);
+
     for (let i = 0; i < cards.length; i++) {
         let card = document.createElement('li');
         card.classList.add('card');
@@ -26,11 +27,13 @@ function displayCards(cards, level) {
         deck.appendChild(card);
 
         let cardImg = document.createElement('img');
-        cardImg.setAttribute('src', './assets/back-cardpng.png');
+
+
+        cardImg.setAttribute('src', `../assets/images/back-cardpng.png`)
         cardImg.setAttribute('alt', `card ${cards[i].id}`);
+        cardImg.classList.add('card-img');
         card.appendChild(cardImg);
 
-        card.addEventListener('click', flipCard);
     }
 
 }
@@ -66,10 +69,15 @@ function checkForMatch() {
     } else {
         firstCard.setAttribute('src', './assets/back-cardpng.png');
         secondCard.setAttribute('src', './assets/back-cardpng.png');
+=======
+        setTimeout(() => {
+            card.classList.add('animate')
+        }, 200 * i);
+
     }
 
     cardsChosen.length = 0;
     cardsChosenId.length = 0;
 }
 
-export { initializeGame };
+export { initializeGame, flipCard };
