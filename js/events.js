@@ -7,6 +7,8 @@ const urlParams = new URLSearchParams(window.location.search);
 const level = urlParams.get('level');
 
 
-document.addEventListener('DOMContentLoaded', initializeGame(level, levels));
+document.addEventListener('DOMContentLoaded', () => {
+    initializeGame(level, levels);
+});
 
 
