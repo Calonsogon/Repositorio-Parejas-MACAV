@@ -15,16 +15,21 @@ function shuffle(cards) {
 
 function displayCards(cards) {
     let deck = document.querySelector('.deck');
-    console.log(deck);
     for (let i = 0; i < cards.length; i++) {
         let card = document.createElement('li');
         card.classList.add('card');
         deck.appendChild(card);
 
         let cardImg = document.createElement('img');
-        cardImg.setAttribute('src', cards[i].url)
+
+        cardImg.setAttribute('src', `../assets/images/back-cardpng.png`)
         cardImg.setAttribute('alt', `card ${cards[i].id}`);
+        cardImg.classList.add('card-img');
         card.appendChild(cardImg);
+
+        setTimeout(() => {
+            card.classList.add('animate')
+        }, 200 * i);
 
     }
 
