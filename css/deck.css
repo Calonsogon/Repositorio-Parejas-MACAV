@@ -66,13 +66,37 @@ main {
         align-items: center;
 
         grid-auto-flow: dense;
-
+        
+        @media (min-width: 768px) {
+            margin: 10%
+        }
+        
 
         .card {
-            background-color: var(--card-back);
 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background-color: var(--card-back);
             border-radius: 10px;
+
+            padding: 20px;
+            aspect-ratio: 1/ 1;
+
+            opacity: 0;
+            transform: translatey(20px); 
+            transition: all 0.8s ease-out;
+
+        
         }
+
+        .animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        
 
     }
 
