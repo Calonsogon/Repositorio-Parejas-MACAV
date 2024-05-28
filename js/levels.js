@@ -57,4 +57,4 @@ const levels = {
     }
 };
 
-export { levels }
+export { levels };
