@@ -1,9 +1,9 @@
 
 
 import { levels } from './levels.js';
-import { initializeGame, startCountdown, endGame } from './functions.js'; //no entiendo pq start.. y end.. no se enlazan
+import { initializeGame, startCountdown } from './functions.js'; 
 
-
+import{ endGame, increasePoints, updatePointsDisplay} from "./functions.js";//no entiendo pq increa.. y end.. no se enlazan
 
 const urlParams = new URLSearchParams(window.location.search);
 const level = urlParams.get('level');
@@ -18,8 +18,6 @@ restartButton.addEventListener("click", () => {
     const twoMinutes = 60 * 2;
     startCountdown(twoMinutes); 
 });
-
-
 
 
 document.addEventListener('DOMContentLoaded', initializeGame(level, levels));

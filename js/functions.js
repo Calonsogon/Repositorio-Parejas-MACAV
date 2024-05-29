@@ -60,6 +60,7 @@ function checkForMatch() {
     const secondCard = cards[cardsChosenId[1]];
 
     if (cardsChosen[0] === cardsChosen[1]) {
+      
         firstCard.parentElement.removeEventListener('click', flipCard);
         secondCard.parentElement.removeEventListener('click', flipCard);
     } else {
@@ -71,6 +72,7 @@ function checkForMatch() {
         }, 200 * i);
 
     }   
+    //limpia arrays para la proxima jugada
      cardsChosen.length = 0;
      cardsChosenId.length = 0;
 
@@ -101,7 +103,7 @@ function startCountdown (duration) {
 }
 
 //función fín juego
-function endGame(){
+export function endGame(){
     alert("¡El tiempo ha terminado. Prueba otra vez!");//mensaje si???
 
     const cards = document.querySelectorAll(".card");
@@ -111,5 +113,18 @@ function endGame(){
     });
 }
 
+let points = 0;
 
-export { initializeGame, startCountdown, endGame};
+//Función incrementar puntos: aumenta 10 puntos cada vez q se empareja.
+ export function increasePoints() {
+    points += 20;
+    updatePointsDisplay();//actualiza puntos
+}
+
+//Función para visualizar los puntos
+export function updatePointsDisplay(){
+    const pointsElement = document.getElementById ("points");
+    pointsElement.textContent = points;
+}
+
+export { initializeGame, startCountdown};
