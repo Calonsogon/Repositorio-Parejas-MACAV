@@ -34,5 +34,41 @@ function displayCards(cards) {
     }
 
 }
+//Elemento temporizador
+const timerElement = document.getElementById("timer");
+let countdownInterval;
 
-export { initializeGame };
+//función inicio temporizador
+function startCountdown (duration) {
+    let timer = duration, minutes, seconds;
+
+    countdownInterval = setInterval(() =>{
+        minutes = parseInt(timer / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        timerElement.textContent = minutes + ":" + seconds;
+
+        if (--timer < 0) {
+            clearInterval(countdownInterval);
+            alert("¡El tiempo ha terminado!");//alert si??
+            endGame();
+        }
+    }, 1000);
+}
+
+//función fín juego
+function endGame(){
+    alert("¡El tiempo ha terminado. Prueba otra vez!");//mensaje si???
+
+    const cards = document.querySelectorAll(".card");
+    cards.forEach(card => {
+        card.classList.add("disable"); //clase disable??
+        card.removeEventListener("click");
+    });
+}
+
+
+export { initializeGame, startCountdown, endGame};
