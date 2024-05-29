@@ -8,6 +8,7 @@ import { initializeGame, startCountdown, endGame } from './functions.js'; //no e
 const urlParams = new URLSearchParams(window.location.search);
 const level = urlParams.get('level');
 
+const card = document.querySelector('.card');
 
 //botón reinicio listener
 const restartButton = document.querySelector(".restart-button"); 
@@ -23,4 +24,5 @@ restartButton.addEventListener("click", () => {
 
 document.addEventListener('DOMContentLoaded', initializeGame(level, levels));
 
+card.addEventListener('click', flipCard();
 
