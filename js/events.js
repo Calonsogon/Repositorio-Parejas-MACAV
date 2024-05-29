@@ -24,5 +24,5 @@ restartButton.addEventListener("click", () => {
 
 document.addEventListener('DOMContentLoaded', initializeGame(level, levels));
 
-card.addEventListener('click', flipCard();
+card.addEventListener('click', flipCard());
 
