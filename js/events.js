@@ -1,37 +1,37 @@
 import { levels } from './levels.js';
-import { initializeGame, startCountdown } from './functions.js';
-
-import { endGame, increasePoints, updatePointsDisplay, toogleSound } from "./functions.js";//no entiendo pq increa.. y end.. no se enlazan
+import { initializeGame, startCountdown, flipCard } from './functions.js';
 
 const urlParams = new URLSearchParams(window.location.search);
 const level = urlParams.get('level');
 
-//DOM cargado
 document.addEventListener('DOMContentLoaded', () => {
     initializeGame(level, levels);
-    const twoMinutes = 60 * 2;
-    startCountdown(twoMinutes);
-});
+    const time = 60 * 2;
+    startCountdown(time);
 
-//click cartas
-document.querySelectorAll(".card").forEach(card => {
-    card.addEventListener("click", flipCard);
-});
+    let cards = document.querySelectorAll(".card");
+    cards.forEach(card => {
+        card.addEventListener("click", (e) => {
+            flipCard(levels, e.currentTarget);
+        })
+    }
+    )
+}
+);
 
-//const card = document.querySelector('.card');
 
-//botón reinicio listener
-const restartButton = document.querySelector(".restart-button");
-restartButton.addEventListener("click", () => {
-    clearInterval(countdownInterval);
-    initializeGame(level, levels);
-    const twoMinutes = 60 * 2;
-    startCountdown(twoMinutes);
-});
+// const restartButton = document.querySelector(".restart-button");
+// restartButton.addEventListener("click", () => {
+//     clearInterval(countdownInterval);
+//     initializeGame(level, levels);
+//     const twoMinutes = 60 * 2;
+//     startCountdown(twoMinutes);
+// });
 
-//Toggle sonido
-const soundToggle = document.getElementById("sound-toggle");
-soundToggle.addEventListener("change", toogleSound);
+// const soundToggle = document.getElementById("sound-toggle");
+// soundToggle.addEventListener("change", toggleSound);
+
+
 
 
 
