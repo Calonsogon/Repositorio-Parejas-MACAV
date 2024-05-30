@@ -115,7 +115,7 @@ export function endGame(){
 
 let points = 0;
 
-//Función incrementar puntos: aumenta 10 puntos cada vez q se empareja.
+//Función incrementar puntos: aumenta 20 puntos cada vez q se empareja.
  export function increasePoints() {
     points += 20;
     updatePointsDisplay();//actualiza puntos
@@ -125,6 +125,22 @@ let points = 0;
 export function updatePointsDisplay(){
     const pointsElement = document.getElementById ("points");
     pointsElement.textContent = points;
+}
+
+//Función sonido
+let soundEnable = true;
+
+//encendido/apagado
+export function toogleSound() {
+    soundEnable = !soundEnable;
+}
+
+//reproducción archivo sonido si está activado
+export function playSound(soundFile) {
+    if (soundEnable) {
+        const audio = new Audio (soundFile);
+        audio.play();
+    }
 }
 
 export { initializeGame, startCountdown};

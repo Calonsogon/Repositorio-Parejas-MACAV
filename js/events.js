@@ -3,7 +3,7 @@
 import { levels } from './levels.js';
 import { initializeGame, startCountdown } from './functions.js'; 
 
-import{ endGame, increasePoints, updatePointsDisplay} from "./functions.js";//no entiendo pq increa.. y end.. no se enlazan
+import{ endGame, increasePoints, updatePointsDisplay, toogleSound} from "./functions.js";//no entiendo pq increa.. y end.. no se enlazan
 
 const urlParams = new URLSearchParams(window.location.search);
 const level = urlParams.get('level');
@@ -18,6 +18,10 @@ restartButton.addEventListener("click", () => {
     const twoMinutes = 60 * 2;
     startCountdown(twoMinutes); 
 });
+
+//Toggle sonido
+const soundToggle = document.getElementById("sound-toggle");
+soundToggle.addEventListener("change", toogleSound);
 
 
 document.addEventListener('DOMContentLoaded', initializeGame(level, levels));
