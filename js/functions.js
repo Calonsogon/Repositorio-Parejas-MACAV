@@ -47,6 +47,8 @@ function flipCard(levels, target) {
     const card = selectedLevel.data[cardId];
 
 
+
+
     const cardImg = target.querySelector('img');
     cardImg.setAttribute('src', card.url);
 
@@ -58,8 +60,10 @@ function flipCard(levels, target) {
     }
 }
 
+
 function checkForMatch(level) {
     const cards = document.querySelectorAll('.card img');
+
     const firstCard = cards[cardsChosenId[0]];
     const secondCard = cards[cardsChosenId[1]];
 
@@ -73,6 +77,7 @@ function checkForMatch(level) {
         firstCard.setAttribute('src', './assets/images/back-cardpng.png');
         secondCard.setAttribute('src', './assets/images/back-cardpng.png');
     }
+
     cardsChosen.length = 0;
     cardsChosenId.length = 0;
 
@@ -83,6 +88,7 @@ function checkForMatch(level) {
 function startCountdown(duration) {
     const timerElement = document.getElementById("timer");
     let countdownInterval;
+
     let timer = duration, minutes, seconds;
 
     countdownInterval = setInterval(() => {
@@ -100,6 +106,7 @@ function startCountdown(duration) {
         }
     }, 1000);
 }
+
 
 // End Game
 
@@ -146,21 +153,28 @@ function checkIfAllCardsTurned(level, card) {
         endGame('win')
     }
 
+
 }
 
 let points = 0;
 
-// Increment points
+
+// Increment point
 export function increasePoints() {
     points += 20;
     updatePointsDisplay();//actualiza puntos
 }
 
+
 // Display points
-function updatePointsDisplay() {
+function updatePointsDisplay()  {
+
     const pointsElement = document.getElementById("points");
     pointsElement.textContent = points;
 }
 
 
+
 export { initializeGame, startCountdown, flipCard };
+
+
