@@ -6,8 +6,8 @@ function initializeGame(level, levels) {
 
 function shuffle(cards) {
     for (let i = cards.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1)); 
-        [cards[i], cards[j]] = [cards[j], cards[i]]; 
+        const j = Math.floor(Math.random() * (i + 1));
+        [cards[i], cards[j]] = [cards[j], cards[i]];
     }
 
     return cards;
@@ -15,10 +15,9 @@ function shuffle(cards) {
 
 function displayCards(cards, level) {
     let deck = document.querySelector('.deck');
-    
+
     deck.setAttribute('data-level', level);
-    deck.innerHTML = '';
-    
+
     for (let i = 0; i < cards.length; i++) {
         let card = document.createElement('li');
         card.classList.add('card');
@@ -30,18 +29,22 @@ function displayCards(cards, level) {
         cardImg.setAttribute('alt', `card ${cards[i].id}`);
         cardImg.classList.add('card-img');
         card.appendChild(cardImg);
+
+        setTimeout(() => {
+            card.classList.add('animate');
+        }, 200 * i);
     }
 
 }
 
-const cardsChosen = []; 
+const cardsChosen = [];
 const cardsChosenId = [];
 
-function flipCard(levels) {
-    let cardId = this.getAttribute('data-id');
+function flipCard(levels, target) {
+    let cardId = target.getAttribute('data-id');
     const selectedLevel = levels[document.querySelector('.deck').getAttribute('data-level')];
     const card = selectedLevel.data[cardId];
-    const cardImg = this.querySelector('img');
+    const cardImg = target.querySelector('img');
 
     cardImg.setAttribute('src', card.url);
 
@@ -55,37 +58,32 @@ function flipCard(levels) {
 
 function checkForMatch() {
     const deck = document.querySelector('.deck');
-    const cards = deck.querySelectorAll ('.card img');
+    const cards = deck.querySelectorAll('.card img');
     const firstCard = cards[cardsChosenId[0]];
     const secondCard = cards[cardsChosenId[1]];
 
     if (cardsChosen[0] === cardsChosen[1]) {
-      
         firstCard.parentElement.removeEventListener('click', flipCard);
         secondCard.parentElement.removeEventListener('click', flipCard);
     } else {
-        firstCard.setAttribute('src', './assets/back-cardpng.png');
-        secondCard.setAttribute('src', './assets/back-cardpng.png');
-
-        setTimeout(() => {
-            card.classList.add('animate')
-        }, 200 * i);
-
-    }   
-    //limpia arrays para la proxima jugada
-     cardsChosen.length = 0;
-     cardsChosenId.length = 0;
+        firstCard.setAttribute('src', './assets/images/back-cardpng.png');
+        secondCard.setAttribute('src', './assets/images/back-cardpng.png');
+    }
+    
+    cardsChosen.length = 0;
+    cardsChosenId.length = 0;
 
 }
+
 //Elemento temporizador
 const timerElement = document.getElementById("timer");
 let countdownInterval;
 
 //función inicio temporizador
-function startCountdown (duration) {
+function  startCountdown(duration) {
     let timer = duration, minutes, seconds;
 
-    countdownInterval = setInterval(() =>{
+    countdownInterval = setInterval(() => {
         minutes = parseInt(timer / 60, 10);
         seconds = parseInt(timer % 60, 10);
 
@@ -103,7 +101,7 @@ function startCountdown (duration) {
 }
 
 //función fín juego
-export function endGame(){
+export function endGame() {
     alert("¡El tiempo ha terminado. Prueba otra vez!");//mensaje si???
 
     const cards = document.querySelectorAll(".card");
@@ -116,14 +114,14 @@ export function endGame(){
 let points = 0;
 
 //Función incrementar puntos: aumenta 20 puntos cada vez q se empareja.
- export function increasePoints() {
+export function increasePoints() {
     points += 20;
     updatePointsDisplay();//actualiza puntos
 }
 
 //Función para visualizar los puntos
-export function updatePointsDisplay(){
-    const pointsElement = document.getElementById ("points");
+export function updatePointsDisplay() {
+    const pointsElement = document.getElementById("points");
     pointsElement.textContent = points;
 }
 
@@ -131,16 +129,16 @@ export function updatePointsDisplay(){
 let soundEnable = true;
 
 //encendido/apagado
-export function toogleSound() {
+function toggleSound() {
     soundEnable = !soundEnable;
 }
 
 //reproducción archivo sonido si está activado
-export function playSound(soundFile) {
+function playSound(soundFile) {
     if (soundEnable) {
-        const audio = new Audio (soundFile);
+        const audio = new Audio(soundFile);
         audio.play();
     }
 }
 
-export { initializeGame, startCountdown, flipCard};
+export { initializeGame, startCountdown, toggleSound, flipCard};
