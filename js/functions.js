@@ -39,48 +39,56 @@ function displayCards(cards, level) {
 
 const cardsChosen = [];
 const cardsChosenId = [];
+const turnedCards = [];
 
 function flipCard(levels, target) {
     let cardId = target.getAttribute('data-id');
     const selectedLevel = levels[document.querySelector('.deck').getAttribute('data-level')];
     const card = selectedLevel.data[cardId];
-    const cardImg = target.querySelector('img');
 
+
+
+
+    const cardImg = target.querySelector('img');
     cardImg.setAttribute('src', card.url);
 
     cardsChosen.push(card.url);
     cardsChosenId.push(cardId);
 
     if (cardsChosen.length === 2) {
-        setTimeout(checkForMatch, 500);
+        setTimeout(checkForMatch(selectedLevel), 2000);
     }
 }
 
-function checkForMatch() {
-    const deck = document.querySelector('.deck');
-    const cards = deck.querySelectorAll('.card img');
+
+function checkForMatch(level) {
+    const cards = document.querySelectorAll('.card img');
+
     const firstCard = cards[cardsChosenId[0]];
     const secondCard = cards[cardsChosenId[1]];
+
 
     if (cardsChosen[0] === cardsChosen[1]) {
         firstCard.parentElement.removeEventListener('click', flipCard);
         secondCard.parentElement.removeEventListener('click', flipCard);
+        checkIfAllCardsTurned(level, firstCard);
+        checkIfAllCardsTurned(level, secondCard);
     } else {
         firstCard.setAttribute('src', './assets/images/back-cardpng.png');
         secondCard.setAttribute('src', './assets/images/back-cardpng.png');
     }
-    
+
     cardsChosen.length = 0;
     cardsChosenId.length = 0;
 
+
 }
 
-//Elemento temporizador
-const timerElement = document.getElementById("timer");
-let countdownInterval;
+// Starting and handling timer
+function startCountdown(duration) {
+    const timerElement = document.getElementById("timer");
+    let countdownInterval;
 
-//función inicio temporizador
-function  startCountdown(duration) {
     let timer = duration, minutes, seconds;
 
     countdownInterval = setInterval(() => {
@@ -94,51 +102,79 @@ function  startCountdown(duration) {
 
         if (--timer < 0) {
             clearInterval(countdownInterval);
-            alert("¡El tiempo ha terminado!");//alert si?? cambiar por popup
-            endGame();
+            endGame('lost');
         }
     }, 1000);
 }
 
-//función fín juego
-export function endGame() {
-    alert("¡El tiempo ha terminado. Prueba otra vez!");//mensaje si???
 
-    const cards = document.querySelectorAll(".card");
-    cards.forEach(card => {
-        card.classList.add("disable"); //clase disable??
-        card.removeEventListener("click");
-    });
+// End Game
+
+function endGame(outcome) {
+    const popUp = document.querySelector('dialog');
+    if (outcome === 'win') {
+        popUp.innerHTML = `
+            <h2> Cogratulations!<br/>You're the winner!</h2>
+            <img src = "./assets/images/winner2.png" alt = "winner_image">
+            <div class="button-wrapper">
+                <div class="button">
+                    <a class="button-content" href=>Restart</a>
+                </div>
+                <div class="button">
+                    <a class="button-content" href="./index.html">Exit</a>
+                </div>
+            </div>
+            `
+    } else {
+        popUp.innerHTML = `
+        <h2> Cogratulations!<br/>You're the winner!</h2>
+        <img src = "./assets/images/looser.png" alt = "looser_image">
+        <div class="button-wrapper">
+            <div class="button">
+                <a class="button-content" href=>Restart</a>
+            </div>
+            <div class="button">
+                <a class="button-content" href="./index.html">Exit</a>
+            </div>
+        </div>
+        `
+
+    }
+    popUp.showModal()
+
+}
+
+
+// Check if all the cards are turned
+function checkIfAllCardsTurned(level, card) {
+    turnedCards.push(card);
+    if(turnedCards.length >= level.cards){
+        
+        endGame('win')
+    }
+
+
 }
 
 let points = 0;
 
-//Función incrementar puntos: aumenta 20 puntos cada vez q se empareja.
+
+// Increment point
 export function increasePoints() {
     points += 20;
     updatePointsDisplay();//actualiza puntos
 }
 
-//Función para visualizar los puntos
-export function updatePointsDisplay() {
+
+// Display points
+function updatePointsDisplay()  {
+
     const pointsElement = document.getElementById("points");
     pointsElement.textContent = points;
 }
 
-//Función sonido
-let soundEnable = true;
 
-//encendido/apagado
-function toggleSound() {
-    soundEnable = !soundEnable;
-}
 
-//reproducción archivo sonido si está activado
-function playSound(soundFile) {
-    if (soundEnable) {
-        const audio = new Audio(soundFile);
-        audio.play();
-    }
-}
+export { initializeGame, startCountdown, flipCard };
 
-export { initializeGame, startCountdown, toggleSound, flipCard};
+
