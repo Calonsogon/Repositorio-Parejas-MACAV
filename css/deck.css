@@ -41,7 +41,7 @@
             max-height: 30px;
             width: auto;
 
-            
+
             @media (min-width: 1280px) {
                 max-height: 50px;
             }
@@ -66,11 +66,11 @@ main {
         align-items: center;
 
         grid-auto-flow: dense;
-        
+
         @media (min-width: 768px) {
             margin: 10%
         }
-        
+
 
         .card {
 
@@ -85,19 +85,16 @@ main {
             aspect-ratio: 1/ 1;
 
             opacity: 0;
-            transform: translatey(20px); 
+            transform: translatey(20px);
             transition: all 0.8s ease-out;
 
-        
+
         }
 
         .animate {
             opacity: 1;
             transform: translateY(0);
         }
-
-        
-
     }
 
 }
@@ -127,3 +124,58 @@ main {
     }
 
 }
+
+
+
+
+dialog {
+    background: var(--popup-gradient);
+    padding: 30px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+
+    transform: translateY(-100%);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    opacity: 0;
+
+    &[open] {
+        opacity: 1;
+        transform: translateY(0);
+
+        @starting-style {
+            opacity: 0;
+            transform: translateY(-100%);
+        }
+    }
+
+    h2 {
+        font-size: var(--fs-600);
+        line-height: 2.5rem;
+    }
+
+    img {
+        max-block-size: 40vh;
+    }
+    
+    .button-wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    
+        margin-block: 20px;
+    
+        .button {
+            padding: 0 0 10px 10px;
+        }
+    
+        .button-content {
+            font-size: var(--fs-400);
+            font-weight: var(--fs-400);
+        }
+    }
+}
+
+
+
+

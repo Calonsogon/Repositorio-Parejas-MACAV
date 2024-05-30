@@ -5,6 +5,7 @@
     --main-gradient: linear-gradient(180deg, rgba(0,191,255,1) 46%, rgba(4,58,76,1) 100%);
     --accent-gradient: linear-gradient(90deg, rgba(255,30,116,1) 50%, rgba(254,154,26,1) 100%);
     --shadow-gradient: linear-gradient(90deg, rgba(197,8,126,1) 50%, rgba(254,154,26,1) 100%);
+    --popup-gradient: linear-gradient(90deg, rgba(170,255,255,1) 99%, rgba(91,224,240,1) 100%);
 
     --card-back: rgb(227, 227, 227);
 
