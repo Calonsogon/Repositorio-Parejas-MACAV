@@ -8,7 +8,19 @@ import{ endGame, increasePoints, updatePointsDisplay, toogleSound} from "./funct
 const urlParams = new URLSearchParams(window.location.search);
 const level = urlParams.get('level');
 
-const card = document.querySelector('.card');
+//DOM cargado
+document.addEventListener('DOMContentLoaded', () => {
+     initializeGame(level, levels);
+     const twoMinutes = 60 * 2;
+    startCountdown(twoMinutes); 
+});
+
+//click cartas
+document.querySelectorAll(".card").forEach( card => {
+    card.addEventListener("click", flipCard);
+});
+
+//const card = document.querySelector('.card');
 
 //botón reinicio listener
 const restartButton = document.querySelector(".restart-button"); 
@@ -24,7 +36,7 @@ const soundToggle = document.getElementById("sound-toggle");
 soundToggle.addEventListener("change", toogleSound);
 
 
-document.addEventListener('DOMContentLoaded', initializeGame(level, levels));
 
-card.addEventListener('click', flipCard());
+
+//card.addEventListener('click', flipCard());
 

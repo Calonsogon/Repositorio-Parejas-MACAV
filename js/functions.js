@@ -143,4 +143,4 @@ export function playSound(soundFile) {
     }
 }
 
-export { initializeGame, startCountdown};
+export { initializeGame, startCountdown, flipCard};
