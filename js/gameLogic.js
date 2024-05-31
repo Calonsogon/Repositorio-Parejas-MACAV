@@ -5,7 +5,7 @@ let cardsToCompareId = [];
 let cardsMatched = [];
 
 function initializeGame(level, levelData) {
-    const currentLevel = levelData[level]
+    const currentLevel = levelData[level];
     const shuffledCards = shuffle(currentLevel.data);
     displayCards(shuffledCards, level);
 }

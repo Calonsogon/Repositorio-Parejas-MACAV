@@ -58,3 +58,22 @@ body {
 
 
 }
+
+
+/* Music toggle Component */
+
+.btn-sound {
+    font-size: var(--fs-600);
+    border: 2px solid transparent;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+
+    &:hover {
+        border: 2px solid black;
+    }
+    
+}
+
