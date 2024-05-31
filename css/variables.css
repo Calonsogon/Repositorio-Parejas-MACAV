@@ -8,7 +8,7 @@
     --shadow-gradient: linear-gradient(90deg, rgba(197,8,126,1) 50%, rgba(254,154,26,1) 100%);
     
     --popupwinner-gradient: linear-gradient(0deg, rgba(140,200,0,1) 0%, rgba(191,255,0,1) 100%);
-    --popuploser-gradient: linear-gradient(0deg, rgba(153,0,0,1) 0%, rgba(255,0,0,1) 100%);
+    --popuplooser-gradient: linear-gradient(0deg, rgba(153,0,0,1) 0%, rgba(255,0,0,1) 100%);
 
 
     --card-back: rgb(227, 227, 227);

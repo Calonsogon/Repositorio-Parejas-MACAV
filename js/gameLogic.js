@@ -1,4 +1,5 @@
 import { displayCards } from "./uiControl.js";
+import { addPoints } from "./timerAndPoints.js";
 
 let cardsToCompare = [];
 let cardsToCompareId = [];
@@ -30,7 +31,7 @@ function flipCard(levels, level, target) {
     cardsToCompare.push(card.url);
     cardsToCompareId.push(cardId);
 
-    if (cardsChosen.length === 2) {
+    if (cardsToCompare.length === 2) {
         setTimeout(() => checkForMatch(currentLevel), 500);
     }
 }
@@ -38,30 +39,31 @@ function flipCard(levels, level, target) {
 
 function checkForMatch(currentLevel) {
     const cards = document.querySelectorAll('.card img');
-    const firstCard = cards[cardsChosenId[0]];
-    const secondCard = cards[cardsChosenId[1]];
+    const firstCard = cards[cardsToCompareId[0]];
+    const secondCard = cards[cardsToCompareId[1]];
 
-    if (cardsChosen[0] === cardsChosen[1]) {
+    if (cardsToCompare[0] === cardsToCompare[1]) {
         firstCard.parentElement.removeEventListener('click', flipCard);
         secondCard.parentElement.removeEventListener('click', flipCard);
         checkIfAllCardsMAtched(currentLevel, firstCard);
         checkIfAllCardsMAtched(currentLevel, secondCard);
+        addPoints();
     } else {
         setTimeout(() => {
             firstCard.setAttribute('src', '../assets/images/card_back.png');
             secondCard.setAttribute('src', '../assets/images/card_back.png');
         }, 1000);
     }
-    cardsChosen.length = 0;
-    cardsChosenId.length = 0;
+    cardsToCompare.length = 0;
+    cardsToCompareId.length = 0;
 }
 
 
 
 function endGame(outcome) {
-    const popUp = document.querySelector('dialog');
+    const dialog = document.querySelector('dialog');
     if (outcome === 'win') {
-        popUp.innerHTML = `
+        dialog.innerHTML = `
             <h2> Cogratulations!<br/>You're the winner!</h2>
             <img src = "./assets/images/winner2.png" alt = "winner_image">
             <div class="button-wrapper">
@@ -73,9 +75,11 @@ function endGame(outcome) {
                 </div>
             </div>
             `
+            dialog.classList.remove('looser')
+            dialog.classList.add('winner');
     } else {
-        popUp.innerHTML = `
-        <h2> Cogratulations!<br/>You're the winner!</h2>
+        dialog.innerHTML = `
+        <h2> You lost!<br/>Try again!</h2>
         <img src = "./assets/images/looser.png" alt = "looser_image">
         <div class="button-wrapper">
             <div class="button">
@@ -85,10 +89,11 @@ function endGame(outcome) {
                 <a class="button-content" href="./index.html">Exit</a>
             </div>
         </div>
-        `
-
+        `   
+            dialog.classList.remove('winner');
+            dialog.classList.add('looser');
     }
-    popUp.showModal()
+    dialog.showModal()
 
 }
 
