@@ -1,7 +1,7 @@
 import { displayCards } from "./uiControl.js";
 
-let cardsChosen = [];
-let cardsChosenId = [];
+let cardsToCompare = [];
+let cardsToCompareId = [];
 let cardsMatched = [];
 
 function initializeGame(level, levelData) {
@@ -27,19 +27,17 @@ function flipCard(levels, level, target) {
     const cardImg = target.querySelector('img');
     cardImg.setAttribute('src', card.url);
 
-    cardsChosen.push(card.url);
-    cardsChosenId.push(cardId);
+    cardsToCompare.push(card.url);
+    cardsToCompareId.push(cardId);
 
     if (cardsChosen.length === 2) {
-        setTimeout(checkForMatch(currentLevel), 2000);
+        setTimeout(() => checkForMatch(currentLevel), 500);
     }
 }
 
 
-
 function checkForMatch(currentLevel) {
     const cards = document.querySelectorAll('.card img');
-
     const firstCard = cards[cardsChosenId[0]];
     const secondCard = cards[cardsChosenId[1]];
 
@@ -48,19 +46,20 @@ function checkForMatch(currentLevel) {
         secondCard.parentElement.removeEventListener('click', flipCard);
         checkIfAllCardsMAtched(currentLevel, firstCard);
         checkIfAllCardsMAtched(currentLevel, secondCard);
-
     } else {
-        firstCard.setAttribute('src', './assets/images/back-cardpng.png');
-        secondCard.setAttribute('src', './assets/images/back-cardpng.png');
+        setTimeout(() => {
+            firstCard.setAttribute('src', '../assets/images/card_back.png');
+            secondCard.setAttribute('src', '../assets/images/card_back.png');
+        }, 1000);
     }
     cardsChosen.length = 0;
     cardsChosenId.length = 0;
-
 }
+
+
 
 function endGame(outcome) {
     const popUp = document.querySelector('dialog');
-    console.log('I am here')
     if (outcome === 'win') {
         popUp.innerHTML = `
             <h2> Cogratulations!<br/>You're the winner!</h2>
