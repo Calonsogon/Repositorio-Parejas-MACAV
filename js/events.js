@@ -1,6 +1,7 @@
 import { levels } from './levels.js';
+import { initializeGame, flipCard } from './gameLogic.js';
+import { startCountdown } from './timer_points.js';
 
-import { initializeGame, startCountdown, flipCard } from './functions.js';
 
 
 const urlParams = new URLSearchParams(window.location.search);
@@ -15,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let cards = document.querySelectorAll(".card");
     cards.forEach(card => {
         card.addEventListener("click", (e) => {
-            flipCard(levels, e.currentTarget);
+            flipCard(levels, level, e.currentTarget);
         })
     }
     )
