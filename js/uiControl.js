@@ -11,7 +11,7 @@ function displayCards(cards, level) {
         deck.appendChild(card);
 
         let cardImg = document.createElement('img');
-        cardImg.setAttribute('src', `../assets/images/back-cardpng.png`)
+        cardImg.setAttribute('src', `../assets/images/card_back.png`)
         cardImg.setAttribute('alt', `card ${cards[i].id}`);
         cardImg.classList.add('card-img');
         card.appendChild(cardImg);
