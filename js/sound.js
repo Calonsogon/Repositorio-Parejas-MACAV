@@ -1,15 +1,15 @@
-//Función sonido
-let soundEnable = true;
+let isSoundEnabled = false;
+let sound = document.getElementById("backgroundMusic");
+let button = document.querySelector(".btn-sound");
 
-//encendido/apagado
 function toggleSound() {
-    soundEnable = !soundEnable;
+    isSoundEnabled = !isSoundEnabled;
+    sound[isSoundEnabled ? 'play' : 'pause'](); 
+
+    
+    const icon = button.querySelector('#music-toggle-icon');
+    icon.classList.remove(isSoundEnabled ? 'fa-toggle-off' : 'fa-toggle-on');
+    icon.classList.add(isSoundEnabled ? 'fa-toggle-on' : 'fa-toggle-off');
 }
 
-//reproducción archivo sonido si está activado
-function playSound(soundFile) {
-    if (soundEnable) {
-        const audio = new Audio(soundFile);
-        audio.play();
-    }
-}
+button.addEventListener("click", toggleSound);

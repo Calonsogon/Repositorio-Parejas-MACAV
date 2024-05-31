@@ -23,11 +23,20 @@ function displayCards(cards, level) {
 
 }
 
-
 function displayPoints()  {
 
     const pointsElement = document.getElementById("points");
     pointsElement.textContent = points;
 }
 
-export { displayCards, displayPoints };
+function displaySoundButton(button, soundOn){
+    if (soundOn) {
+        button.innerHTML = "";
+        button.innerHTML = `<i class="fa-solid fa-music"></i><i class="fa-solid fa-toggle-on"></i>`;   
+    } else {
+        button.innerHTML = "";
+        button.innerHTML = `<i class="fa-solid fa-music"></i><i class="fa-solid fa-toggle-off"></i>`; 
+    }
+}
+
+export { displayCards, displayPoints, displaySoundButton };

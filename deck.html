@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="./css/variables.css">
     <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="./css/deck.css">
+
+    <audio id="backgroundMusic" src="./assets/sounds/background_music.mp3" loop></audio>
+
     <title>Macav Memory Game</title>
 </head>
 
@@ -56,12 +59,16 @@
                 Go back
             </a>
         </div>
-        <div>
-            <button id="sound-toggle">Sound toggle</button>
-        </div>
+        <button class="btn-sound">
+            <i class="fa-solid fa-music"></i>
+            <i class="fa-solid fa-toggle-off" id="music-toggle-icon"></i>
+        </button>
+    
     </footer>
     
+    <script src="https://kit.fontawesome.com/16079e1994.js" crossorigin="anonymous"></script>
     <script src="./js/events.js" type="module"></script>
+    <script src="./js/sound.js" type="module"></script>
 </body>
 
 </html>

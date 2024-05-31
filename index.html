@@ -12,6 +12,10 @@
     <link rel="stylesheet" href="./css/variables.css">
     <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="./css/hompage.css">
+
+    <audio id="backgroundMusic" src="./assets/sounds/background_music.mp3" loop></audio>
+
+
     <title>Macav Memory Game</title>
 </head>
 
@@ -21,13 +25,8 @@
         <div class="title">
             <p class="welcome-message">Welcome to</p>
             <h1>Macav <br>Games</h1>
-        </div>    
-        <img src="./assets/images/logo.png" alt="logo_macav"> </img>
-       <!--Botón Sonido-->
-        <div class="sound-toggle">
-            <input type="checkbox" id="sound-toggle">
-            <label for="sound-toggle">Sound</label>
         </div>
+        <img src="./assets/images/logo.png" alt="logo_macav"> </img>
 
     </header>
     <main>
@@ -53,7 +52,15 @@
             </li>
         </ol>
     </main>
+    <footer>
+        <button class="btn-sound">
+            <i class="fa-solid fa-music"></i>
+            <i class="fa-solid fa-toggle-off" id="music-toggle-icon"></i>
+        </button>
+    </footer>
 
+    <script src="https://kit.fontawesome.com/16079e1994.js" crossorigin="anonymous"></script>
+    <script type="module" src="./js/soundHompage.js"></script>
 </body>
 
 </html>
