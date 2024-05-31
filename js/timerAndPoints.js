@@ -28,10 +28,11 @@ function startCountdown(duration) {
 }
 
 
+// Adding points to the board;
 
 function addPoints() {
     points += 20;
-    displayPoints();
+    displayPoints(points);
 }
 
 

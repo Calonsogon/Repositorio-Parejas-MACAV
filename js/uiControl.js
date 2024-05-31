@@ -23,8 +23,7 @@ function displayCards(cards, level) {
 
 }
 
-function displayPoints()  {
-
+function displayPoints(points)  {
     const pointsElement = document.getElementById("points");
     pointsElement.textContent = points;
 }
