@@ -2,8 +2,6 @@ import { levels } from './levels.js';
 import { initializeGame, flipCard } from './gameLogic.js';
 import { startCountdown } from './timerAndPoints.js';
 
-
-
 const urlParams = new URLSearchParams(window.location.search);
 const level = urlParams.get('level');
 

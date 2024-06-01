@@ -59,6 +59,10 @@ body {
 
 }
 
+.button-content:focus {
+    outline: none;
+}
+
 
 /* Music toggle Component */
 
