@@ -1,3 +1,6 @@
+
+import { fireworks } from "./fireworks.js";
+
 function displayCards(cards, level) {
     let deck = document.querySelector('.deck');
     deck.innerHTML = '';
@@ -45,7 +48,7 @@ function displaySoundButton(button, soundOn) {
 
 // Show the dialog contents when the user wins the game 
 
-function displayEndGameDialog(dialog, outcome, pyro) {
+function displayEndGameDialog(dialog, outcome) {
     const title = outcome === 'win' ? 'Congratulations! <br/> You\'re the winner!' : 'You lost! <br/> Try again!';
     const imageFile = outcome === 'win' ? 'winner2.png' : 'looser.png';
     const classToAdd = outcome === 'win' ? 'winner' : 'looser';
@@ -66,10 +69,10 @@ function displayEndGameDialog(dialog, outcome, pyro) {
     dialog.classList.remove('winner', 'looser');
     dialog.classList.add(classToAdd);
 
-    // if(outcome === 'win') {
-    //     console.log(pyro)
-    //     pyro.classList.remove('hidden');
-    // }
+    if(outcome === 'win') {
+        // firework.classList.remove('hidden');
+        fireworks();
+    }
 }
 
 
