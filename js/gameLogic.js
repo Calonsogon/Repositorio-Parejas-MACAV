@@ -103,6 +103,7 @@ function addPoints() {
 
 function checkIfWinner(cards, points) {
     totalPoints = cards.length * 10;
+    console.log(totalPoints);
     if (totalPoints === points) {
         endGame('win')
     }

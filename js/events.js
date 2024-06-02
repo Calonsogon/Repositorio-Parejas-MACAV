@@ -6,6 +6,7 @@ import { intervalID } from './timer.js';
 const urlParams = new URLSearchParams(window.location.search);
 const level = urlParams.get('level');
 
+let cards = document.querySelectorAll(".card");
 
 document.addEventListener('DOMContentLoaded', () => {
     initializeGame(level, levels);
@@ -25,6 +26,7 @@ restartButton.forEach(button => {
     button.addEventListener('click', () => {
         clearInterval(intervalID);
         initializeGame(level, levels)
+        let cards = document.querySelectorAll(".card");
         cards.forEach(card => {
             console.log(e.currentTarget)
             card.addEventListener("click", (e) => {

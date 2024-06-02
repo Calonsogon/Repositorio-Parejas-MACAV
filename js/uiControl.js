@@ -66,10 +66,10 @@ function displayEndGameDialog(dialog, outcome, pyro) {
     dialog.classList.remove('winner', 'looser');
     dialog.classList.add(classToAdd);
 
-    if(outcome === 'win') {
-        console.log(pyro)
-        pyro.classList.remove('hidden');
-    }
+    // if(outcome === 'win') {
+    //     console.log(pyro)
+    //     pyro.classList.remove('hidden');
+    // }
 }
 
 
