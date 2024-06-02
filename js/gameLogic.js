@@ -1,6 +1,7 @@
 import { displayCards, displayEndGameDialog, displayPoints } from "./uiControl.js";
 import { startCountdown, intervalID } from "./timer.js";
 import { endGameSounds } from "./sound.js";
+import { stopFireworks } from "./fireworks.js";
 
 let cardsToCompare = [];
 let cardsToCompareId = [];
@@ -11,10 +12,16 @@ let isClickable = true;
 
 
 function initializeGame(level, levelData) {
-    console.log('I am here')
     const currentLevel = levelData[level];
     const shuffledCards = shuffle(currentLevel.data);
     displayCards(shuffledCards, level);
+    let cards = document.querySelectorAll(".card");
+    cards.forEach(card => {
+        card.addEventListener("click", (e) => {
+            flipCard(levelData, level, e.currentTarget);
+        })
+    }
+    )
     startCountdown(time);
 }
 
@@ -76,7 +83,7 @@ function checkForMatch() {
             firstCard.classList.remove('rotate');
             secondCard.classList.remove('rotate');
     }, 500);
- };
+    };
 
     cardsToCompare.length = 0;
     cardsToCompareId.length = 0;
@@ -103,12 +110,17 @@ function addPoints() {
 
 function checkIfWinner(cards, points) {
     totalPoints = cards.length * 10;
-    console.log(totalPoints);
     if (totalPoints === points) {
         endGame('win')
     }
 }
 
+function restartGame(level, levels, intervalID){
+    document.querySelector('dialog').close();
+    stopFireworks();
+    clearInterval(intervalID);
+    initializeGame(level, levels);
+}
 
 
-export { initializeGame, flipCard, endGame }
+export { initializeGame, flipCard, endGame, restartGame }

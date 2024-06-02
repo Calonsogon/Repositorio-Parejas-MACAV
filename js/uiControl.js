@@ -52,14 +52,16 @@ function displayEndGameDialog(dialog, outcome) {
     const title = outcome === 'win' ? 'Congratulations! <br/> You\'re the winner!' : 'You lost! <br/> Try again!';
     const imageFile = outcome === 'win' ? 'winner2.png' : 'looser.png';
     const classToAdd = outcome === 'win' ? 'winner' : 'looser';
-    
+
 
     dialog.innerHTML = `
         <h2>${title}</h2>
         <img src="./assets/images/${imageFile}" alt="${outcome}_image">
         <div class="button-wrapper">
-            <div class="button">
-                <a class="button-content" href="#">Restart</a>
+            <div class="button" >
+                <button class="button-content" id="restart-game">
+                    Restart
+                </button>
             </div>
             <div class="button">
                 <a class="button-content" href="./index.html">Exit</a>
@@ -69,8 +71,8 @@ function displayEndGameDialog(dialog, outcome) {
     dialog.classList.remove('winner', 'looser');
     dialog.classList.add(classToAdd);
 
-    if(outcome === 'win') {
-        // firework.classList.remove('hidden');
+
+    if (outcome === 'win') {
         fireworks();
     }
 }
@@ -78,4 +80,4 @@ function displayEndGameDialog(dialog, outcome) {
 
 
 
-export { displayCards, displayPoints, displaySoundButton, displayEndGameDialog};
+export { displayCards, displayPoints, displaySoundButton, displayEndGameDialog };

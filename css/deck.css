@@ -7,7 +7,8 @@
     height: 10%;
     width: 100%;
 
-    padding: 20px 10px;
+
+    padding: 20px;
 
     img {
         width: 70px;
@@ -52,23 +53,29 @@
 
 main {
     min-height: 80vh;
+    width: 90%;
     padding-inline: 20px;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
 
     .deck {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
         gap: 20px;
         justify-content: center;
         align-items: center;
+        width: 100%;
+        grid-template-columns: repeat(3,  minmax(100px, 300px));
 
-        grid-auto-flow: dense;
 
         @media (min-width: 768px) {
-            margin: 10%
+            margin: 10%;
+        }
+
+        @media (min-width: 1280px) {
+            margin-inline: 30%;
         }
 
         &.not-clickable {
@@ -82,29 +89,29 @@ main {
             display: flex;
             justify-content: center;
             align-items: center;
-
             background-color: var(--card-back);
             border-radius: 10px;
-
-            padding: 20px;
-            aspect-ratio: 1/ 1;
-
-            opacity: 0;
-            transform: translatey(20px);
+            aspect-ratio: 1 / 1;
             transition: all 0.8s ease-out;
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
 
-
-            width: 159px;
-            height: 154px;
         }
 
         .animate {
             opacity: 1;
             transform: translateY(0);
         }
+
+
     }
 
 }
+
+
+
 
 
 .footer {
@@ -156,10 +163,24 @@ main {
         }
     }
 
+}
 
+.rotate {
+    animation: rotate-animation 0.6s;
+}
 
+@keyframes rotate-animation {
+    0% {
+        transform: rotateY(0deg);
+    }
 
+    50% {
+        transform: rotateY(180deg);
+    }
 
+    100% {
+        transform: rotateY(360deg);
+    }
 }
 
 
@@ -213,21 +234,5 @@ dialog {
         background: var(--popuplooser-gradient);
     }
 
-}
-
-.rotate {
-    animation: rotate-animation 0.6s;
-}
-
-@keyframes rotate-animation {
-    0% {
-        transform: rotateY(0deg);
-    }
-    50% {
-        transform: rotateY(180deg);
-    }
-    100% {
-        transform: rotateY(360deg);
-    }
 }
 
