@@ -54,6 +54,10 @@ body {
 
 }
 
+.button-content:focus {
+    outline: none;
+}
+
 
 
 

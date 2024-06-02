@@ -89,6 +89,8 @@ main {
             transition: all 0.8s ease-out;
 
 
+            width: 159px;
+            height: 154px; 
         }
 
         .animate {
@@ -206,5 +208,8 @@ dialog {
         background: var(--popuplooser-gradient);
     }
 
-
 }
+/* 
+.rotate {
+    animation: rotate-animation 0.6s;
+} */

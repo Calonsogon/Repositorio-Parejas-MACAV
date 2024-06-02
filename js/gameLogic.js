@@ -7,6 +7,8 @@ let cardsMatched = [];
 const time = 60 * 2;
 
 
+let funcionStop = true;
+
 function initializeGame(level, levelData) {
     const currentLevel = levelData[level];
     const shuffledCards = shuffle(currentLevel.data);
@@ -23,21 +25,24 @@ function shuffle(cards) {
     return cards;
 }
 
-function flipCard(levels, level, target) {
-    let cardId = target.getAttribute('data-id');
-    const currentLevel = levels[level];
-    const card = currentLevel.data[cardId];
+function flipCard(levels, level, target){
+if (funcionStop) {
+        let cardId = target.getAttribute('data-id');
+        const currentLevel = levels[level];
+        const card = currentLevel.data[cardId];
 
-    const cardImg = target.querySelector('img');
-    cardImg.setAttribute('src', card.url);
+        const cardImg = target.querySelector('img');
+        cardImg.setAttribute('src', card.url);
 
-    cardsToCompare.push(card.url);
-    cardsToCompareId.push(cardId);
+        cardsToCompare.push(card.url);
+        cardsToCompareId.push(cardId);
 
-    if (cardsToCompare.length === 2) {
-        setTimeout(() => checkForMatch(currentLevel), 500);
+        if (cardsToCompare.length === 2) {
+            funcionStop = false;
+            setTimeout(() => checkForMatch(currentLevel), 1000);
+        }
     }
-}
+} 
 
 
 function checkForMatch(currentLevel) {
@@ -55,11 +60,14 @@ function checkForMatch(currentLevel) {
         setTimeout(() => {
             firstCard.setAttribute('src', '../assets/images/card_back.png');
             secondCard.setAttribute('src', '../assets/images/card_back.png');
-        }, 1000);
+        }, 300);
     }
+
     cardsToCompare.length = 0;
     cardsToCompareId.length = 0;
+    funcionStop = true;
 }
+
 
 
 
