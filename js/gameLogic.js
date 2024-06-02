@@ -1,13 +1,16 @@
 import { displayCards } from "./uiControl.js";
-import { addPoints, startCountdown } from "./timerAndPoints.js";
+import { addPoints, startCountdown, intervalID } from "./timerAndPoints.js";
+import { endGameSounds } from "./sound.js";
 
 let cardsToCompare = [];
 let cardsToCompareId = [];
 let cardsMatched = [];
+
+
 const time = 60 * 2;
+let isClickable = true;
 
 
-let funcionStop = true;
 
 function initializeGame(level, levelData) {
     const currentLevel = levelData[level];
@@ -25,8 +28,8 @@ function shuffle(cards) {
     return cards;
 }
 
-function flipCard(levels, level, target){
-if (funcionStop) {
+function flipCard(levels, level, target) {
+        if (!isClickable) return;
         let cardId = target.getAttribute('data-id');
         const currentLevel = levels[level];
         const card = currentLevel.data[cardId];
@@ -43,12 +46,13 @@ if (funcionStop) {
         cardsToCompare.push(card.url);
         cardsToCompareId.push(cardId);
 
+
         if (cardsToCompare.length === 2) {
-            funcionStop = false;
-            setTimeout(() => checkForMatch(currentLevel), 1000);
+            isClickable = false;
+            document.querySelector('.deck').classList.add('not-clickable');
+            setTimeout(() => checkForMatch(currentLevel), 500);
         }
-    }
-} 
+}
 
 
 function checkForMatch(currentLevel) {
@@ -74,17 +78,19 @@ function checkForMatch(currentLevel) {
             secondCard.classList.remove('rotate');
     }, 500);
  };
+
     cardsToCompare.length = 0;
     cardsToCompareId.length = 0;
-    funcionStop = true;
+    document.querySelector('.deck').classList.remove('not-clickable');
+    isClickable = true;
 }
-
 
 
 
 function endGame(outcome) {
     const dialog = document.querySelector('dialog');
     if (outcome === 'win') {
+        clearInterval(intervalID);
         dialog.innerHTML = `
             <h2> Cogratulations!<br/>You're the winner!</h2>
             <img src = "./assets/images/winner2.png" alt = "winner_image">
@@ -97,8 +103,11 @@ function endGame(outcome) {
                 </div>
             </div>
             `
-            dialog.classList.remove('looser')
-            dialog.classList.add('winner');
+        
+        dialog.classList.remove('looser')
+        dialog.classList.add('winner');
+        endGameSounds('win');
+
     } else {
         dialog.innerHTML = `
         <h2> You lost!<br/>Try again!</h2>
@@ -111,10 +120,11 @@ function endGame(outcome) {
                 <a class="button-content" href="./index.html">Exit</a>
             </div>
         </div>
-        `   
-            dialog.classList.remove('winner');
-            dialog.classList.add('looser');
-    }
+        `
+        dialog.classList.remove('winner');
+        dialog.classList.add('looser');
+        endGameSounds('loose');
+        }
     dialog.showModal()
 
 }

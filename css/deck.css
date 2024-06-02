@@ -71,6 +71,11 @@ main {
             margin: 10%
         }
 
+        &.not-clickable {
+            pointer-events: none;
+            cursor: not-allowed;
+        }
+
 
         .card {
 
