@@ -11,6 +11,7 @@ let isClickable = true;
 
 
 function initializeGame(level, levelData) {
+    console.log('I am here')
     const currentLevel = levelData[level];
     const shuffledCards = shuffle(currentLevel.data);
     displayCards(shuffledCards, level);
@@ -88,9 +89,8 @@ function checkForMatch() {
 function endGame(outcome) {
     clearInterval(intervalID);
     const dialog = document.querySelector('dialog');
-    const pyro = document.querySelector('.pyro');
-    console.log(pyro);
-    displayEndGameDialog(dialog, outcome, pyro); 
+
+    displayEndGameDialog(dialog, outcome); 
     endGameSounds(outcome);
     dialog.showModal();
 }

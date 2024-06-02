@@ -15,6 +15,10 @@ audio {
     display: hidden;
 }
 
+.hidden {
+    display: none;
+}
+
 
 /* Button component */
 

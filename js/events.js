@@ -6,11 +6,11 @@ import { intervalID } from './timer.js';
 const urlParams = new URLSearchParams(window.location.search);
 const level = urlParams.get('level');
 
-let cards = document.querySelectorAll(".card");
 
 document.addEventListener('DOMContentLoaded', () => {
     initializeGame(level, levels);
     let cards = document.querySelectorAll(".card");
+
     cards.forEach(card => {
         card.addEventListener("click", (e) => {
             flipCard(levels, level, e.currentTarget);
@@ -28,7 +28,6 @@ restartButton.forEach(button => {
         initializeGame(level, levels)
         let cards = document.querySelectorAll(".card");
         cards.forEach(card => {
-            console.log(e.currentTarget)
             card.addEventListener("click", (e) => {
                 flipCard(levels, level, e.currentTarget);
             })
