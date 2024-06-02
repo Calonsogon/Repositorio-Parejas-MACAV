@@ -1,4 +1,4 @@
-import { endGame } from "./gameLogic.js";
+import { endGame } from "./gameEnd.js";
 let intervalID;
 
 // Starting and handling timer
