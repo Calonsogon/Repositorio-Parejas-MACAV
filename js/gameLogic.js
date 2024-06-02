@@ -88,7 +88,9 @@ function checkForMatch() {
 function endGame(outcome) {
     clearInterval(intervalID);
     const dialog = document.querySelector('dialog');
-    displayEndGameDialog(dialog, outcome); 
+    const pyro = document.querySelector('.pyro');
+    console.log(pyro);
+    displayEndGameDialog(dialog, outcome, pyro); 
     endGameSounds(outcome);
     dialog.showModal();
 }

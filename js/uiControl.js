@@ -45,10 +45,11 @@ function displaySoundButton(button, soundOn) {
 
 // Show the dialog contents when the user wins the game 
 
-function displayEndGameDialog(dialog, outcome) {
-    const title = outcome === 'win' ? 'Congratulations! You\'re the winner!' : 'You lost! Try again!';
+function displayEndGameDialog(dialog, outcome, pyro) {
+    const title = outcome === 'win' ? 'Congratulations! <br/> You\'re the winner!' : 'You lost! <br/> Try again!';
     const imageFile = outcome === 'win' ? 'winner2.png' : 'looser.png';
     const classToAdd = outcome === 'win' ? 'winner' : 'looser';
+    
 
     dialog.innerHTML = `
         <h2>${title}</h2>
@@ -64,6 +65,11 @@ function displayEndGameDialog(dialog, outcome) {
     `;
     dialog.classList.remove('winner', 'looser');
     dialog.classList.add(classToAdd);
+
+    if(outcome === 'win') {
+        console.log(pyro)
+        pyro.classList.remove('hidden');
+    }
 }
 
 

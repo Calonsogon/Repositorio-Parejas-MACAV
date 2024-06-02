@@ -95,7 +95,7 @@ main {
 
 
             width: 159px;
-            height: 154px; 
+            height: 154px;
         }
 
         .animate {
@@ -128,7 +128,7 @@ main {
 
         }
 
-        
+
         .restart-btn {
             display: none;
 
@@ -202,7 +202,7 @@ dialog {
 
         .button {
             padding: 0 0 10px 10px;
-        } 
+        }
     }
 
     &.winner {
@@ -214,11 +214,6 @@ dialog {
     }
 
 }
-/* 
-.rotate {
-    animation: rotate-animation 0.6s;
-} */
-
 
 .rotate {
     animation: rotate-animation 0.6s;
@@ -235,3 +230,4 @@ dialog {
         transform: rotateY(360deg);
     }
 }
+
