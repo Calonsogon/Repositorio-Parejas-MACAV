@@ -11,6 +11,10 @@ body {
 
 }
 
+audio {
+    display: hidden;
+}
+
 
 /* Button component */
 

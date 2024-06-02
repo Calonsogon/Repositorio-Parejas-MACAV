@@ -1,5 +1,7 @@
 let isSoundEnabled = false;
 let sound = document.getElementById("backgroundMusic");
+let winSound = document.getElementById("win-sound");
+let looseSound = document.getElementById("loose-sound");
 let button = document.querySelector(".btn-sound");
 
 function toggleSound() {
@@ -12,4 +14,13 @@ function toggleSound() {
     icon.classList.add(isSoundEnabled ? 'fa-toggle-on' : 'fa-toggle-off');
 }
 
+function endGameSounds(output){
+    if(output === 'win') return winSound.play() 
+    
+    looseSound.play();
+}
+
 button.addEventListener("click", toggleSound);
+
+
+export { endGameSounds };

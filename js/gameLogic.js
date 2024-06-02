@@ -1,5 +1,6 @@
 import { displayCards } from "./uiControl.js";
 import { addPoints, startCountdown, intervalID } from "./timerAndPoints.js";
+import { endGameSounds } from "./sound.js";
 
 let cardsToCompare = [];
 let cardsToCompareId = [];
@@ -89,8 +90,11 @@ function endGame(outcome) {
                 </div>
             </div>
             `
+        
         dialog.classList.remove('looser')
         dialog.classList.add('winner');
+        endGameSounds('win');
+
     } else {
         dialog.innerHTML = `
         <h2> You lost!<br/>Try again!</h2>
@@ -106,7 +110,8 @@ function endGame(outcome) {
         `
         dialog.classList.remove('winner');
         dialog.classList.add('looser');
-    }
+        endGameSounds('loose');
+        }
     dialog.showModal()
 
 }
