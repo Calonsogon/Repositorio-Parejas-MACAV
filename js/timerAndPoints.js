@@ -3,15 +3,15 @@ import { endGame } from "./gameLogic.js";
 
 
 let points = 0;
+let intervalID;
 
 // Starting and handling timer
 function startCountdown(duration) {
     const timerElement = document.getElementById("timer");
-    let countdownInterval;
 
     let timer = duration, minutes, seconds;
 
-    countdownInterval = setInterval(() => {
+    intervalID = setInterval(() => {
         minutes = parseInt(timer / 60, 10);
         seconds = parseInt(timer % 60, 10);
 
@@ -21,10 +21,12 @@ function startCountdown(duration) {
         timerElement.textContent = minutes + ":" + seconds;
 
         if (--timer < 0) {
-            clearInterval(countdownInterval);
+            clearInterval(intervalID);
             endGame('lost');
         }
     }, 1000);
+
+    return intervalID ;
 }
 
 
@@ -36,4 +38,4 @@ function addPoints() {
 }
 
 
-export  { addPoints, startCountdown }
+export  { addPoints, startCountdown, intervalID}

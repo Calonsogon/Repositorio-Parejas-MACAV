@@ -31,33 +31,30 @@ body {
         }
     }
 
+    .button-content {
+        background: var(--accent-gradient);
+        color: white;
 
-}
-
-.button-content {
-    background: var(--accent-gradient);
-    color: white;
-    font-size: var(--fs-600);
-    font-weight: var(--fw-600);
-
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-
-    padding: 10px 20px;
-    border: none;
-    color: white;
-    text-align: center;
-    text-decoration: none;
-    cursor: pointer;
-    border-radius: 32px;
-    width: 100%;
-    aspect-ratio: 200 / 40;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    
+        padding: 10px 20px;
+        border: none;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        cursor: pointer;
+        border-radius: 32px;
+        aspect-ratio: 200 / 40;
+    
+    
+    }
 
 
 }
+
+
 
 
 /* Music toggle Component */
