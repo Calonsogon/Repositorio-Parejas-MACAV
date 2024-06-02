@@ -11,6 +11,7 @@ const levels = {
             { id: 7, url: '../assets/images/card_3.png' },
             { id: 8, url: '../assets/images/card_4.png' },
         ]
+
     },
     medium: {
         cards: 12,

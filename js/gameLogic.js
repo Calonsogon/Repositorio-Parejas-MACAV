@@ -1,15 +1,13 @@
-import { displayCards } from "./uiControl.js";
-import { addPoints, startCountdown, intervalID } from "./timerAndPoints.js";
+import { displayCards, displayEndGameDialog, displayPoints } from "./uiControl.js";
+import { startCountdown, intervalID } from "./timer.js";
 import { endGameSounds } from "./sound.js";
 
 let cardsToCompare = [];
 let cardsToCompareId = [];
-let cardsMatched = [];
-
-
+let totalPoints = 0;
+let points = 0;
 const time = 60 * 2;
 let isClickable = true;
-
 
 
 function initializeGame(level, levelData) {
@@ -44,12 +42,12 @@ function flipCard(levels, level, target) {
         if (cardsToCompare.length === 2) {
             isClickable = false;
             document.querySelector('.deck').classList.add('not-clickable');
-            setTimeout(() => checkForMatch(currentLevel), 500);
+            setTimeout(() => checkForMatch(), 500);
         }
 }
 
 
-function checkForMatch(currentLevel) {
+function checkForMatch() {
     const cards = document.querySelectorAll('.card img');
     const firstCard = cards[cardsToCompareId[0]];
     const secondCard = cards[cardsToCompareId[1]];
@@ -57,9 +55,9 @@ function checkForMatch(currentLevel) {
     if (cardsToCompare[0] === cardsToCompare[1]) {
         firstCard.parentElement.removeEventListener('click', flipCard);
         secondCard.parentElement.removeEventListener('click', flipCard);
-        checkIfAllCardsMAtched(currentLevel, firstCard);
-        checkIfAllCardsMAtched(currentLevel, secondCard);
-        addPoints();
+        let points = addPoints();
+        checkIfWinner(cards, points);
+
     } else {
         setTimeout(() => {
             firstCard.setAttribute('src', '../assets/images/card_back.png');
@@ -75,51 +73,22 @@ function checkForMatch(currentLevel) {
 
 
 function endGame(outcome) {
+    clearInterval(intervalID);
     const dialog = document.querySelector('dialog');
-    if (outcome === 'win') {
-        clearInterval(intervalID);
-        dialog.innerHTML = `
-            <h2> Cogratulations!<br/>You're the winner!</h2>
-            <img src = "./assets/images/winner2.png" alt = "winner_image">
-            <div class="button-wrapper">
-                <div class="button">
-                    <a class="button-content" href=>Restart</a>
-                </div>
-                <div class="button">
-                    <a class="button-content" href="./index.html">Exit</a>
-                </div>
-            </div>
-            `
-        
-        dialog.classList.remove('looser')
-        dialog.classList.add('winner');
-        endGameSounds('win');
-
-    } else {
-        dialog.innerHTML = `
-        <h2> You lost!<br/>Try again!</h2>
-        <img src = "./assets/images/looser.png" alt = "looser_image">
-        <div class="button-wrapper">
-            <div class="button">
-                <a class="button-content" href=>Restart</a>
-            </div>
-            <div class="button">
-                <a class="button-content" href="./index.html">Exit</a>
-            </div>
-        </div>
-        `
-        dialog.classList.remove('winner');
-        dialog.classList.add('looser');
-        endGameSounds('loose');
-        }
-    dialog.showModal()
-
+    displayEndGameDialog(dialog, outcome); 
+    endGameSounds(outcome);
+    dialog.showModal();
 }
 
+function addPoints() {
+    points += 20;
+    displayPoints(points);
+    return points;
+}
 
-function checkIfAllCardsMAtched(currentLevel, card) {
-    cardsMatched.push(card)
-    if (cardsMatched.length >= currentLevel.cards) {
+function checkIfWinner(cards, points) {
+    totalPoints = cards.length * 10;
+    if (totalPoints === points) {
         endGame('win')
     }
 }

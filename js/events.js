@@ -1,12 +1,10 @@
 import { levels } from './levels.js';
 import { initializeGame, flipCard } from './gameLogic.js';
-import { intervalID } from './timerAndPoints.js';
-
+import { intervalID } from './timer.js';
 
 
 const urlParams = new URLSearchParams(window.location.search);
 const level = urlParams.get('level');
-
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -35,8 +33,6 @@ restartButton.forEach(button => {
         }
         )
     });
-
-
 }
 
 )

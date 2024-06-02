@@ -1,8 +1,4 @@
-import { displayPoints } from "./uiControl.js";
 import { endGame } from "./gameLogic.js";
-
-
-let points = 0;
 let intervalID;
 
 // Starting and handling timer
@@ -30,12 +26,4 @@ function startCountdown(duration) {
 }
 
 
-// Adding points to the board;
-
-function addPoints() {
-    points += 20;
-    displayPoints(points);
-}
-
-
-export  { addPoints, startCountdown, intervalID}
+export  { startCountdown, intervalID}
