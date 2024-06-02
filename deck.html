@@ -39,18 +39,26 @@
         </ul>
     </main>
     <footer class="footer">
-        <div class="button">
-            <a href="./index.html" class="button-content">
-                Go back
-            </a>
+        <div class="wrapper">
+            <div class="button">
+                <a href="./index.html" class="button-content">
+                    Go back
+                </a>
+            </div>
+            <i class="fa-solid fa-rotate-left restart-icon" id="restart-game"></i>
+            <div class="button restart-btn" id="restart-game">
+                <button class="button-content">
+                    Restart  
+                </button>
+            </div>
         </div>
         <button class="btn-sound">
             <i class="fa-solid fa-music"></i>
             <i class="fa-solid fa-toggle-off" id="music-toggle-icon"></i>
         </button>
-    
+
     </footer>
-    
+
     <script src="https://kit.fontawesome.com/16079e1994.js" crossorigin="anonymous"></script>
     <script src="./js/events.js" type="module"></script>
     <script src="./js/sound.js" type="module"></script>

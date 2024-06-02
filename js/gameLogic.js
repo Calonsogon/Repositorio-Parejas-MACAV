@@ -1,9 +1,11 @@
 import { displayCards } from "./uiControl.js";
-import { addPoints } from "./timerAndPoints.js";
+import { addPoints, startCountdown } from "./timerAndPoints.js";
 
 let cardsToCompare = [];
 let cardsToCompareId = [];
 let cardsMatched = [];
+const time = 60 * 2;
+
 
 let funcionStop = true;
 
@@ -11,6 +13,7 @@ function initializeGame(level, levelData) {
     const currentLevel = levelData[level];
     const shuffledCards = shuffle(currentLevel.data);
     displayCards(shuffledCards, level);
+    startCountdown(time);
 }
 
 function shuffle(cards) {
@@ -107,10 +110,8 @@ function endGame(outcome) {
 
 
 function checkIfAllCardsMAtched(currentLevel, card) {
-    cardsMatched.push(card);
-    console.log(currentLevel.cards);
+    cardsMatched.push(card)
     if (cardsMatched.length >= currentLevel.cards) {
-
         endGame('win')
     }
 }

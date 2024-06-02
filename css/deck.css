@@ -105,25 +105,55 @@ main {
 .footer {
     background: var(--main-gradient);
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
 
     padding: 20px;
     width: 100%;
 
-    .button {
 
-        padding: 0 0 10px 10px;
+    .wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: stretch;
+        gap: 20px;
 
-        .button-content {
-            font-size: var(--fs-400);
 
-            @media (min-width: 1280px) {
-                font-size: var(--fs-600);
+        .button {
+            padding: 0 0 10px 10px;
+
+        }
+
+        
+        .restart-btn {
+            display: none;
+
+            @media (min-width: 760px) {
+                display: block;
             }
 
         }
 
+        .restart-icon {
+            font-size: var(--fs-600);
+            padding: 10px;
+            border: 2px solid transparent;
+            border-radius: 10px;
+
+            &:hover {
+                border: 2px solid black;
+            }
+
+
+            @media (min-width: 760px) {
+                display: none;
+            }
+
+        }
     }
+
+
+
+
 
 }
 
@@ -158,22 +188,16 @@ dialog {
     img {
         max-block-size: 40vh;
     }
-    
+
     .button-wrapper {
         display: flex;
         justify-content: space-between;
         align-items: center;
-    
         margin-block: 20px;
-    
+
         .button {
             padding: 0 0 10px 10px;
-        }
-    
-        .button-content {
-            font-size: var(--fs-400);
-            font-weight: var(--fs-400);
-        }
+        } 
     }
 
     &.winner {
@@ -183,13 +207,9 @@ dialog {
     &.looser {
         background: var(--popuplooser-gradient);
     }
-}
 
+}
+/* 
 .rotate {
     animation: rotate-animation 0.6s;
-}
-
-
-
-
-
+} */
