@@ -32,7 +32,13 @@ if (funcionStop) {
         const card = currentLevel.data[cardId];
 
         const cardImg = target.querySelector('img');
-        cardImg.setAttribute('src', card.url);
+        cardImg.classList.add('rotate')
+        setTimeout(function() {
+            cardImg.setAttribute('src', card.url);
+        }, 200);
+        setTimeout(function() {
+            cardImg.classList.remove('rotate');
+    }, 400);
 
         cardsToCompare.push(card.url);
         cardsToCompareId.push(cardId);
@@ -57,12 +63,17 @@ function checkForMatch(currentLevel) {
         checkIfAllCardsMAtched(currentLevel, secondCard);
         addPoints();
     } else {
-        setTimeout(() => {
-            firstCard.setAttribute('src', '../assets/images/card_back.png');
-            secondCard.setAttribute('src', '../assets/images/card_back.png');
-        }, 300);
-    }
-
+        firstCard.classList.add('rotate')
+        secondCard.classList.add('rotate')
+        setTimeout(function() {
+        firstCard.setAttribute('src', '../assets/images/card_back.png');
+        secondCard.setAttribute('src', '../assets/images/card_back.png');
+        }, 100);
+        setTimeout(function() {
+            firstCard.classList.remove('rotate');
+            secondCard.classList.remove('rotate');
+    }, 500);
+ };
     cardsToCompare.length = 0;
     cardsToCompareId.length = 0;
     funcionStop = true;
@@ -118,4 +129,4 @@ function checkIfAllCardsMAtched(currentLevel, card) {
 
 
 
-export { initializeGame, flipCard, endGame } 
+export { initializeGame, flipCard, endGame }
