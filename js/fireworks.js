@@ -1,3 +1,5 @@
+let fireworksInterval;
+
 function fireworks() {
     const container = document.getElementById('fireworks-container');
 
@@ -27,7 +29,13 @@ function fireworks() {
         }, 800);
     }
 
-    setInterval(createFirework, 400);
-};
+    fireworksInterval = setInterval(createFirework, 400);
+}
 
-export { fireworks }
+function stopFireworks() {
+    clearInterval(fireworksInterval);
+    const fireworks = document.querySelectorAll('.firework');
+    fireworks.forEach(firework => firework.remove());
+}
+
+export { fireworks, stopFireworks };
