@@ -3,6 +3,7 @@ import {  intervalID } from "./timer.js";
 import { endGameSounds } from "./sound.js";
 import { stopFireworks } from "./fireworks.js";
 import { initializeGame } from "./gameInit.js";
+import { resetPoints } from "./scoreManagment.js";
 
 
 function endGame(outcome) {
@@ -19,6 +20,7 @@ function restartGame(level, levels, intervalID, time){
     document.querySelector('dialog').close();
     stopFireworks();
     clearInterval(intervalID);
+    resetPoints();
     initializeGame(level, levels, time);
 }
 

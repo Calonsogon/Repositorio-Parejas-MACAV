@@ -8,5 +8,9 @@ function addPoints() {
     return points;
 }
 
+function resetPoints(){
+    points = 0;
+}
 
-export { addPoints }
+
+export { addPoints, resetPoints };
