@@ -1,4 +1,4 @@
-import { displayEndGameDialog } from "./uiControl.js";
+import { displayEndGameDialog, displayPoints } from "./uiControl.js";
 import {  intervalID } from "./timer.js";
 import { endGameSounds } from "./sound.js";
 import { stopFireworks } from "./fireworks.js";
@@ -21,6 +21,7 @@ function restartGame(level, levels, intervalID, time){
     stopFireworks();
     clearInterval(intervalID);
     resetPoints();
+    displayPoints(0);
     initializeGame(level, levels, time);
 }
 
