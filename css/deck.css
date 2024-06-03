@@ -61,13 +61,17 @@ main {
     justify-content: center;
     align-items: center;
 
+    @media (min-width: 768px) {
+         height: auto;
+    }
+
     .deck {
         display: grid;
         gap: 20px;
         justify-content: center;
         align-items: center;
         width: 100%;
-        grid-template-columns: repeat(3,  minmax(100px, 300px));
+        grid-template-columns: repeat(3,  minmax(100px, 200px));
 
 
         @media (min-width: 768px) {

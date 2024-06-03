@@ -1,5 +1,6 @@
 
 import { addPoints } from "./scoreManagment.js";
+import { endGame } from "./gameEnd.js";
 
 let cardsToCompare = [];
 let cardsToCompareId = [];
