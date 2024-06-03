@@ -21,5 +21,8 @@ Haz clic en las cartas para voltearlas y encontrar las parejas.
 Completa el juego antes de que termine el tiempo.
 
 ## Créditos
-Este proyecto fue desarrollado por el equipo MACAV (Valentina, Adriana y Carol). 
+Este proyecto fue desarrollado por el equipo MACAV:
+Valentina: https://github.com/ItalianCookieMonster.
+Adriana: https://github.com/Adrianaortiz00.
+Carol: https://github.com/Calonsogon. 
 
