@@ -5,9 +5,8 @@ function displayCards(cards, level) {
     let deck = document.querySelector('.deck');
     deck.innerHTML = '';
 
-    if (level === "hard") {
-        document.styleSheets[4].cssRules[1].cssRules[0].style.gridTemplateColumns = 'repeat(4, 1fr)';
-    }
+    if (level === "hard") { deck.style.gridTemplateColumns = ' repeat(4,  minmax(100px, 200px))';}
+    
 
     deck.setAttribute('data-level', level);
 
